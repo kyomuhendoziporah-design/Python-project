@@ -1,0 +1,28 @@
+def calculate_gpa(courses):
+    total_points = 0
+    total_credits = 0
+
+    for grade, credits in courses:
+        total_points += grade * credits
+        total_credits += credits
+
+    if total_credits == 0:
+        return 0
+
+    return total_points / total_credits
+from calculator import calculate_gpa
+
+courses = []
+
+num_courses = int(input("How many courses did you take? "))
+
+for i in range(num_courses):
+    print(f"\nCourse {i+1}")
+    grade = float(input("Enter grade points (0-4): "))
+    credits = int(input("Enter credit hours: "))
+
+    courses.append((grade, credits))
+
+gpa = calculate_gpa(courses)
+
+print("\nYour GPA is:", round(gpa, 2))
