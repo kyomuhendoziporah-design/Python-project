@@ -1,0 +1,107 @@
+import random
+
+# Quiz questions: (question, options, correct answer)
+questions = [
+    {
+        "question": "What is the output of print(type(10))?",
+        "options": ["A) <class 'str'>", "B) <class 'int'>", "C) <class 'float'>", "D) <class 'num'>"],
+        "answer": "B"
+    },
+    {
+        "question": "Which keyword is used to define a function in Python?",
+        "options": ["A) function", "B) def", "C) fun", "D) define"],
+        "answer": "B"
+    },
+    {
+        "question": "What does len('hello') return?",
+        "options": ["A) 4", "B) 6", "C) 5", "D) 'hello'"],
+        "answer": "C"
+    },
+    {
+        "question": "Which of these is used to add an item to a list?",
+        "options": ["A) list.add()", "B) list.insert()", "C) list.append()", "D) list.push()"],
+        "answer": "C"
+    },
+    {
+        "question": "What is the correct way to create a comment in Python?",
+        "options": ["A) // comment", "B) /* comment */", "C) # comment", "D) -- comment"],
+        "answer": "C"
+    },
+    {
+        "question": "What does the 'range(5)' function return?",
+        "options": ["A) [1, 2, 3, 4, 5]", "B) [0, 1, 2, 3, 4]", "C) [0, 1, 2, 3, 4, 5]", "D) (1, 2, 3, 4, 5)"],
+        "answer": "B"
+    },
+    {
+        "question": "Which data type is immutable in Python?",
+        "options": ["A) List", "B) Dictionary", "C) Set", "D) Tuple"],
+        "answer": "D"
+    },
+    {
+        "question": "What does 'import' do in Python?",
+        "options": ["A) Exports a module", "B) Deletes a module", "C) Brings in a module to use", "D) Creates a new module"],
+        "answer": "C"
+    },
+    {
+        "question": "What symbol is used for exponentiation in Python?",
+        "options": ["A) ^", "B) **", "C) ^^", "D) exp()"],
+        "answer": "B"
+    },
+    {
+        "question": "What will print(10 // 3) output?",
+        "options": ["A) 3.33", "B) 4", "C) 3", "D) 1"],
+        "answer": "C"
+    },
+]
+
+def run_quiz():
+    print("=" * 50)
+    print("   🐍 WELCOME TO THE PYTHON PROGRAMMING QUIZ 🐍")
+    print("=" * 50)
+    print(f"You will be asked {len(questions)} questions.")
+    print("Type A, B, C, or D for each answer.\n")
+
+    score = 0
+    random.shuffle(questions)
+
+    for i, q in enumerate(questions, 1):
+        print(f"\nQuestion {i} of {len(questions)}:")
+        print(q["question"])
+        for option in q["options"]:
+            print(option)
+
+        # Get valid answer
+        while True:
+            answer = input("\nYour answer: ").strip().upper()
+            if answer in ["A", "B", "C", "D"]:
+                break
+            else:
+                print("❌ Please enter A, B, C, or D only!")
+
+        if answer == q["answer"]:
+            print("✅ Correct!")
+            score += 1
+        else:
+            print(f"❌ Wrong! The correct answer was {q['answer']}")
+
+    # Final score
+    print("\n" + "=" * 50)
+    print(f"   QUIZ COMPLETE! Your score: {score}/{len(questions)}")
+    print("=" * 50)
+
+    percentage = (score / len(questions)) * 100
+
+    if percentage == 100:
+        print("🏆 Perfect score! You are a Python master!")
+    elif percentage >= 70:
+        print("🎉 Great job! You know Python well!")
+    elif percentage >= 50:
+        print("👍 Not bad! Keep practicing!")
+    else:
+        print("📚 Keep studying! You'll get there!")
+
+    print("\nThank you for playing! 🐍")
+
+# Run the quiz
+if __name__ == "__main__":
+    run_quiz()
