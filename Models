@@ -1,0 +1,5 @@
+import from django models
+class CustomUser
+roles = 'student'
+         'supervisor'
+department = models.CharField(max = 100(
